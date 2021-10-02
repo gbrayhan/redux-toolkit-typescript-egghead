@@ -2,7 +2,6 @@ import {createAsyncThunk, createSelector, createSlice, PayloadAction} from "@red
 import {CartItems, checkout} from "../../app/api";
 import {RootState} from "../../app/store";
 
-
 type CheckoutState = "LOADING" | "READY" | "ERROR";
 
 export interface CartState {
@@ -67,17 +66,6 @@ const cartSlice = createSlice({
         })
     }
 });
-
-// export function checkout() {
-//     return function checkoutThunk(dispatch: AppDispatch) {
-//         dispatch({type: "cart/checkout/pending"});
-//         setTimeout(() => {
-//             dispatch({type: "cart/checkout/fulfilled"});
-//         }, 500)
-//     }
-// }
-
-
 
 export const getTotalPrice = createSelector(
     (state: RootState) => state.cart.items,
