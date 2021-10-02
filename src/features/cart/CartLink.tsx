@@ -1,11 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import {useAppSelector} from "../../app/hooks";
+import {getNumItems, getMemorizedNumItems} from "../products/productsSlice";
 import styles from "./CartLink.module.css";
 
 export function CartLink() {
-  return (
-    <Link to="/cart" className={styles.link}>
-      <span className={styles.text}>🛒&nbsp;&nbsp;Cart</span>
-    </Link>
-  );
+    const numItems = useAppSelector(getMemorizedNumItems);
+    return (
+        <Link to="/cart" className={styles.link}>
+            <span className={styles.text}>🛒&nbsp;&nbsp;{ numItems || "Cart"}</span>
+        </Link>
+    );
 }
